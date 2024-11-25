@@ -1,0 +1,13 @@
+{
+  "name": "playwright-task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Dule992/playwright-task.git",
+  "author": "Dule992 <dusanmilic92@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.9.3"
+  },
+  "scripts": {}
+}

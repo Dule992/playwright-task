@@ -1,0 +1,29 @@
+{
+    "url": {
+        "home": "https://www.automationexercise.com/",
+        "login": "https://www.automationexercise.com/login",
+        "signup": "https://www.automationexercise.com/signup",
+        "account_created": "https://www.automationexercise.com/account_created",
+        "user_dashboard": "https://www.automationexercise.com/user-dashboard"
+    },
+    "user": {
+        "name": "John",
+        "email": "test",
+        "title": "Mr",
+        "firstName": "John",
+        "lastName": "Doe",
+        "password": "test",
+        "birthday": "1",
+        "birthmonth": "January",
+        "birthyear": "1990",
+        "company": "test",
+        "address": "test",
+        "city": "test",
+        "state": "test",
+        "zipcode": "12345",
+        "mobileNumber": "1234567890"
+    },
+    "message": {
+        "account_created": "Account Created!"
+    }
+}

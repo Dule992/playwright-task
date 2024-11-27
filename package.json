@@ -9,5 +9,15 @@
     "@playwright/test": "^1.49.0",
     "@types/node": "^22.9.3"
   },
-  "scripts": {}
+  "scripts": {
+    "test:run:ui": "playwright test --ui",
+    "test:run:chrome:headless": "playwright test --project chromium",
+    "test:run:firefox:headless": "playwright test --project firefox",
+    "test:run:webkit:headless": "playwright test --project webkit",
+    "test:run:all:headless": "playwright test",
+    "test:open:chromium": "playwright test --project chromium --headed",
+    "test:open:firefox": "playwright test --project firefox --headed",
+    "test:open:webkit": "playwright test --project webkit --headed",
+    "test:open:all": "playwright test --headed"
+  }
 }

@@ -4,12 +4,20 @@
         "login": "https://www.automationexercise.com/login",
         "signup": "https://www.automationexercise.com/signup",
         "account_created": "https://www.automationexercise.com/account_created",
-        "user_dashboard": "https://www.automationexercise.com/user-dashboard"
+        "user_dashboard": "https://www.automationexercise.com/user-dashboard",
+        "product": "https://www.automationexercise.com/products",
+        "cart": "https://www.automationexercise.com/view_cart"
     },
+    "navigtion" : {
+        "login": "loginLink",
+        "cart": "cartLink",
+        "loggedInAsUser": "loggedInAsUser",
+        "deleteAccount": "deleteAccount"
+        },
     "user": {
         "name": "John",
         "email": "test",
-        "title": "Mr",
+        "title": "Mr.",
         "firstName": "John",
         "lastName": "Doe",
         "password": "test",
@@ -20,10 +28,18 @@
         "address": "test",
         "city": "test",
         "state": "test",
+        "country": "India",
         "zipcode": "12345",
         "mobileNumber": "1234567890"
     },
     "message": {
-        "account_created": "Account Created!"
+        "account_created": "Account Created!",
+        "added_to_cart": "Added!"
+    },
+    "product": {
+        "name": "Premium Polo T-Shirts",
+        "description": "test",
+        "price": "Rs. 1500",
+        "quantity": "1"
     }
 }

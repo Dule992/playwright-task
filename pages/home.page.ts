@@ -7,13 +7,19 @@ export class HomePage extends BasePage {
         super(page);
     }
 
-    readonly selectors = {
-        loginLinkNavigation: 'a[href="/login"]',
-        cartLinkNavigation: 'a[href="/view_cart"]',
-        loggedInAsUser:  '.fa.fa-user',
+    navigtionMap : { [key: string]: string } = {
+        loginLink: 'Signup / Login',
+        cartLink: 'Cart',
+        loggedInAsUser: 'Logged in as',
+        deleteAccount: 'Delete Account',
     };
 
-    async userIsLoggedIn() {
-        return await this.page.isVisible(this.selectors.loggedInAsUser);
+    locators = {
+        linkNavigation: (link: string) => {return this.page.getByRole('link', { name: `${link}` })},
+    };
+
+    async navigateToLink(link: string) {
+        await this.locators.linkNavigation(this.navigtionMap[link]).click();
     }
 }
+

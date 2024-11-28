@@ -16,6 +16,7 @@ export class HomePage extends BasePage {
 
     locators = {
         linkNavigation: (link: string) => {return this.page.getByRole('link', { name: `${link}` })},
+        loggedInUser: (user: string) => {return this.page.getByText(`Logged in as ${user}`)}
     };
 
     async navigateToLink(link: string) {
@@ -24,6 +25,10 @@ export class HomePage extends BasePage {
 
     async linkNavigationIsVisible(link: string){
         return await this.locators.linkNavigation(this.navigtionMap[link]).isVisible();
+    }
+
+    async loggedInUserIsVisible(user: string){
+        return await this.locators.loggedInUser(user).isVisible();
     }
 }
 

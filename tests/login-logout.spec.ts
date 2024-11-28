@@ -68,6 +68,7 @@ describe('Login and Logout', () => {
         await loginPage.clickLoginButton();
 
         expect((homePage.linkNavigationIsVisible(testData.navigtion.loggedInAsUser))).toBeTruthy();
+        expect((homePage.loggedInUserIsVisible(userData.name))).toBeTruthy();
 
         await homePage.navigateToLink(testData.navigtion.logout);
 

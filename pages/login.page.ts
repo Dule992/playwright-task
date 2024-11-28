@@ -3,7 +3,7 @@ import { BasePage } from './base.page';
 
 export class LoginPage extends BasePage {
     
-    constructor(page: Page) {
+    constructor(public readonly page: Page) {
         super(page);
     }
 

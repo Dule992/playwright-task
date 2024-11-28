@@ -20,7 +20,7 @@ describe('Login and Logout', () => {
         const page = await browser.newPage();
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
-    
+
         await homePage.open('/');
     });
 
@@ -52,15 +52,14 @@ describe('Login and Logout', () => {
                 city: testData.user.city,
                 mobile_number: testData.user.mobileNumber
             }
-    }));
-        console.log(response.headers().data);
-        console.log(response.headers());
+        }));
+        console.log(response.headers().multipart);
         const responseBody = await response.json();
         console.log(responseBody);
-        // expect(response.ok).toBeTruthy();
-        // expect(responseBody).toBe(testData.message.user_created);
+        expect(response.ok).toBeTruthy();
+        expect(responseBody.message).toBe(testData.message.user_created);
     });
-    
+
     test('Successful User Login', async () => {
         expect(await homePage.getUrl()).toBe((testData.url.home));
         await homePage.navigateToLink(testData.navigtion.signup_login);
@@ -73,5 +72,20 @@ describe('Login and Logout', () => {
         await homePage.navigateToLink(testData.navigtion.logout);
 
         expect((homePage.linkNavigationIsVisible(testData.navigtion.signup_login))).toBeTruthy();
+    });
+
+    test.afterEach(async ({ request }) => {
+        // Delete the user
+        const response = (await request.delete(`/api/deleteAccount`, {
+            multipart: {
+                email: userData.email,
+                password: testData.user.password
+            }
+        }));
+        console.log(response.headers().multipart);
+        const responseBody = await response.json();
+        console.log(responseBody);
+        expect(response.ok).toBeTruthy();
+        expect(responseBody.message).toBe(testData.message.account_deleted);
     });
 });

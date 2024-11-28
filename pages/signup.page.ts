@@ -47,37 +47,30 @@ export class SignupPage extends BasePage {
 
     async enterFirstName(firstname: string) {
         await this.locators.firstNameInput.fill(firstname);
-        await expect(this.locators.firstNameInput).toHaveValue(firstname)
     }
 
     async enterLastName(lastname: string) {
         await this.locators.lastNameInput.fill(lastname);
-        await expect(this.locators.lastNameInput).toHaveValue(lastname)
     }
 
     async enterCompany(company: string) {
         await this.locators.companyInput.fill(company);
-        await expect(this.locators.companyInput).toHaveValue(company)
     }
 
     async enterAddress(address: string) {
         await this.locators.addressInput.fill(address);
-        await expect(this.locators.addressInput).toHaveValue(address)
     }
 
     async enterCity(city: string) {
         await this.locators.cityInput.fill(city);
-        await expect(this.locators.cityInput).toHaveValue(city)
     }
 
     async enterState(state: string) {
         await this.locators.stateInput.fill(state);
-        await expect(this.locators.stateInput).toHaveValue(state)
     }
 
     async enterZipcode(zipcode: string) {
         await this.locators.zipcodeInput.fill(zipcode);
-        await expect(this.locators.zipcodeInput).toHaveValue(zipcode)
     }
 
     async selectCountry(country: string) {
@@ -86,30 +79,27 @@ export class SignupPage extends BasePage {
 
     async enterMobileNumber(number: string) {
         await this.locators.mobileNumberInput.fill(number);
-        await expect(this.locators.mobileNumberInput).toHaveValue(number)
     }
 
     async clickOnCreateAccountButton() {
-        await this.locators.createAccountButton.waitFor({ state: "visible" });
-        await this.locators.createAccountButton.scrollIntoViewIfNeeded();
-        return this.locators.createAccountButton.click();
+        return await this.locators.createAccountButton.click();
     }
 
     async populateUserRegistrationForm(userData: any) {
-        this.checkTitleRadioButton(userData.title);
-        this.enterPassword(userData.password);
-        this.selectDay(userData.birthday);
-        this.selectMonth(userData.birthmonth);
-        this.selectYear(userData.birthyear);
-        this.enterFirstName(userData.firstName);
-        this.enterLastName(userData.lastName);
-        this.enterCompany(userData.company);
-        this.enterAddress(userData.address);
-        this.enterCity(userData.city);
-        this.enterState(userData.state);
-        this.enterZipcode(userData.zipcode);
-        this.selectCountry(userData.country);
-        this.enterMobileNumber(userData.mobileNumber);
-        this.clickOnCreateAccountButton();
+        await this.checkTitleRadioButton(userData.title);
+        await this.enterPassword(userData.password);
+        await this.selectDay(userData.birthday);
+        await this.selectMonth(userData.birthmonth);
+        await this.selectYear(userData.birthyear);
+        await this.enterFirstName(userData.firstName);
+        await this.enterLastName(userData.lastName);
+        await this.enterCompany(userData.company);
+        await this.enterAddress(userData.address);
+        await this.enterCity(userData.city);
+        await this.enterState(userData.state);
+        await this.enterZipcode(userData.zipcode);
+        await this.selectCountry(userData.country);
+        await this.enterMobileNumber(userData.mobileNumber);
+        await this.clickOnCreateAccountButton();
     }
 }

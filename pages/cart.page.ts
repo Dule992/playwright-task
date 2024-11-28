@@ -3,7 +3,7 @@ import { expect, Page } from '@playwright/test';
 
 export class CartPage extends BasePage {
 
-    constructor(page: Page) {
+    constructor(public readonly page: Page) {
         super(page);
     }
 

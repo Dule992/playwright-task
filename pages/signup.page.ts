@@ -1,5 +1,5 @@
 import { BasePage } from './base.page';
-import { Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
 export class SignupPage extends BasePage {
 
@@ -47,30 +47,37 @@ export class SignupPage extends BasePage {
 
     async enterFirstName(firstname: string) {
         await this.locators.firstNameInput.fill(firstname);
+        await expect(this.locators.firstNameInput).toHaveValue(firstname)
     }
 
     async enterLastName(lastname: string) {
         await this.locators.lastNameInput.fill(lastname);
+        await expect(this.locators.lastNameInput).toHaveValue(lastname)
     }
 
-    async enterCompany(conpany: string) {
-        await this.locators.companyInput.fill(conpany);
+    async enterCompany(company: string) {
+        await this.locators.companyInput.fill(company);
+        await expect(this.locators.companyInput).toHaveValue(company)
     }
 
     async enterAddress(address: string) {
         await this.locators.addressInput.fill(address);
+        await expect(this.locators.addressInput).toHaveValue(address)
     }
 
     async enterCity(city: string) {
         await this.locators.cityInput.fill(city);
+        await expect(this.locators.cityInput).toHaveValue(city)
     }
 
     async enterState(state: string) {
         await this.locators.stateInput.fill(state);
+        await expect(this.locators.stateInput).toHaveValue(state)
     }
 
     async enterZipcode(zipcode: string) {
         await this.locators.zipcodeInput.fill(zipcode);
+        await expect(this.locators.zipcodeInput).toHaveValue(zipcode)
     }
 
     async selectCountry(country: string) {
@@ -79,9 +86,12 @@ export class SignupPage extends BasePage {
 
     async enterMobileNumber(number: string) {
         await this.locators.mobileNumberInput.fill(number);
+        await expect(this.locators.mobileNumberInput).toHaveValue(number)
     }
 
     async clickOnCreateAccountButton() {
+        await this.locators.createAccountButton.waitFor({ state: "visible" });
+        await this.locators.createAccountButton.scrollIntoViewIfNeeded();
         return this.locators.createAccountButton.click();
     }
 

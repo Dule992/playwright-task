@@ -39,7 +39,7 @@ describe('Search and Add Product', () => {
         console.log("User data", userData);
     });
 
-    test.only('Verify searching and adding certain product to the Cart', async () => {
+    test('Verify searching and adding certain product to the Cart', async () => {
         expect(await productPage.getUrl()).toBe((testData.url.product));
         await productPage.enterSearchText("T-Shirt");
 

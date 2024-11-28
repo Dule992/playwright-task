@@ -1,6 +1,5 @@
 import { Page } from '@playwright/test';
 import { BasePage } from './base.page';
-
 export class HomePage extends BasePage {
 
     constructor(page: Page) {
@@ -8,10 +7,11 @@ export class HomePage extends BasePage {
     }
 
     navigtionMap : { [key: string]: string } = {
-        loginLink: 'Signup / Login',
-        cartLink: 'Cart',
+        signup_login: 'Signup / Login',
+        cart: 'Cart',
         loggedInAsUser: 'Logged in as',
         deleteAccount: 'Delete Account',
+        logout: 'Logout',
     };
 
     locators = {
@@ -20,6 +20,10 @@ export class HomePage extends BasePage {
 
     async navigateToLink(link: string) {
         await this.locators.linkNavigation(this.navigtionMap[link]).click();
+    }
+
+    async linkNavigationIsVisible(link: string){
+        return await this.locators.linkNavigation(this.navigtionMap[link]).isVisible();
     }
 }
 

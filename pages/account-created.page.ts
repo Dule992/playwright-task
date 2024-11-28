@@ -13,6 +13,7 @@ export class AccountCreatedPage extends BasePage {
     };  
 
     async getTitleMessage() {
+        await this.locators.titleMessage.waitFor({state: 'visible'});
         return await this.locators.titleMessage.textContent();
     }
 

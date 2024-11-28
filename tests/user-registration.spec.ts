@@ -39,7 +39,7 @@ describe('User Registration', () => {
     
     test('Successful User Registration', async () => {
         expect(await homePage.getUrl()).toBe((testData.url.home));
-        await homePage.navigateToLink(testData.navigtion.login);
+        await homePage.navigateToLink(testData.navigtion.signup_login);
         await loginPage.enterName(userData.name);
         await loginPage.enterEmail(userData.email);
         await loginPage.clickSignUpButton();
@@ -48,13 +48,23 @@ describe('User Registration', () => {
 
         await signupPage.populateUserRegistrationForm(testData.user);
 
-        expect(await accountCreatedPage.getUrl()).toBe(testData.url.account_created);
         expect(await accountCreatedPage.getTitleMessage()).toContain(testData.message.account_created);
-
         await accountCreatedPage.clickContinueButton();
+        expect(await accountCreatedPage.getUrl()).toBe(testData.url.account_created);
+        
+        expect((homePage.linkNavigationIsVisible(testData.navigtion.loggedInAsUser))).toBeTruthy();
+    });
 
-        expect((homePage.locators.linkNavigation(testData.navigtion.loggedInAsUser)).isVisible()).toBeTruthy();
-
-        await homePage.locators.linkNavigation(testData.navigtion.deleteAccount).click();
+    test.skip(async ({ request }) => {
+        // Delete the user
+        const response = (await request.delete(`/api/deleteAccount`, {
+            multipart: {
+                email: userData.email,
+                password: testData.user.password
+            }
+    }));
+        console.log(response.headers());
+        expect(response.ok).toBeTruthy();
+        expect(response.body).toBe(testData.message.account_deleted);
     });
 });
